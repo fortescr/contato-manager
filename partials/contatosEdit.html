@@ -1,0 +1,33 @@
+    <button type="button" class="close" ng-click="cancel();">
+        <i class="fa fa-times-circle-o" style="margin:10px;color:blue;"></i>
+    </button>
+    <div class="modal-header">
+        <h3 class="modal-title">Contato [ID: {{contato.id}}]</h3>
+    </div>
+    <div class="modal-body">
+        <form name="contato_form" class="form-horizontal" role="form" novalidate>
+            <form-element label="NOME" mod="contato">
+                <input type="text" class="form-control" name="name" placeholder="NOME" ng-model="contato.nome" focus/>
+            </form-element>
+            <form-element label="FONE" mod="contato">
+                <input type="text" class="form-control" name="fone" placeholder="FONE" ng-model="contato.fone" />
+            </form-element>
+
+            <div class="space"></div>
+            <div class="space-4"></div>
+            <div class="modal-footer">
+                <form-element label="">
+                    <div class="text-right">
+                        <a class="btn btn-sm" ng-click="cancel()"><i class="ace-icon fa fa-reply"></i>Cancelar</a>
+                        <button ng-click="saveContato(contato);"
+                                ng-disabled="contato_form.$invalid || enableUpdate"
+                                class="btn btn-sm btn-primary"
+                                type="submit">
+                            <i class="ace-icon fa fa-check"></i>{{buttonText}}
+                        </button>
+                    </div>
+                </form-element>
+            </div>
+        </form>
+    </div>
+

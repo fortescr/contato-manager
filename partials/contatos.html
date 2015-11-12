@@ -1,0 +1,42 @@
+<h4 class="blog-post-title">Contatos</h4>
+<hr/>
+
+<button type="button" class="btn btn-danger fa fa-plus" ng-click="open(contato);">&nbsp;Adicionar</button>
+
+<div class="table-responsive">
+<div class="panel panel-primary">
+  <div class="panel-heading">Lista de Contatos
+      <div class="sw-search" >
+            <div class="nav-search" id="nav-search">
+                    Filtro: <span class="input-icon">
+                        <input placeholder="Filtro de contatos..." class="nav-search-input" ng-model="filterContato" ng-change="resetLimit();"  autocomplete="off" type="text" style="width:300px;" focus>
+                        <i class="search-icon fa fa-search nav-search-icon"></i>
+                    </span>
+            </div>
+        </div>
+    </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+    <tr ng-show="contatos.length==0"><td style="vertical-align:middle;"><i class="fa fa-ban fa-3x"></i>&nbsp;Sem registros</td></tr>
+    <tr ng-hide="contatos.length>-1"><td style="vertical-align:middle;"><i class="fa fa-cog fa-3x fa-spin"></i>&nbsp;Carregando</td></tr>
+    
+    <tr>
+        <th>ID</th>
+        <th>NOME</th>
+        <th>TELEFONE</th>
+    </tr>
+
+    <tr ng-repeat="c in contatos | filter:filterContato | orderBy:'-id'" id="{{c.id}}" animate-on-change='c.packing + c.stock + c.price + c.description' ng-animate=" 'animate'">
+        <td>{{c.id}}</td><td>{{c.nome}}</td><td>{{c.fone}}</td>
+        <td style="width:100px">
+            <div class="btn-group">
+              <button type="button" class="btn btn-default fa fa-edit" ng-click="open(c);"></button>
+              <button type="button" class="btn btn-danger fa fa-trash-o" ng-click="deleteContato(c);"></button>
+            </div>
+        </td>
+    </tr>
+    </table>
+</div>
+</div>
+</div>
+              
